@@ -1,0 +1,13 @@
+{% extends "main/header.html" %}
+{% block content%}
+<div class="container">
+    <h6>Want to post information and not a job info? Click below</h6>
+    <a href="/post"><button class="btn">Add a Post</button></a>
+    <h5>Add Job Availability Information</h5>
+    <form method = "POST"> 
+        {% csrf_token %}
+        {{form.as_p}}  
+        <button class="btn btn-success">Submit</button>
+    </form> 
+</div>
+{% endblock %}

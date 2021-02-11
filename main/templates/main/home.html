@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<body>
+{% extends "main/header.html" %}
+{% block content%}
+  <div>
+  <div>
+    <h1>Welcome to BlueCollarJobs.</h1>
+    <p>We make finding jobs easier.</p>
+  </div>
+
+  <div class="row">
+    <form action="{% url 'main:search' %}" method="get">
+      <div class="col s12 m6 l6">
+        <div class="form-group">
+        <input class="form-control" name="query" type="text" placeholder="Type a Job to Search...">
+        </div>
+      </div>
+      <button class="btn btn-primary">Search</button>
+    </form>
+  </div>
+  
+  <div class="row">
+    <h5>Following are the available Job Categories</h5>
+    {%for j in jobs%}
+    <div class="col s12 m6 l4">
+      <a href="{{j.category_slug}}", style="color:#000">
+      	<div class="card center hoverable" >
+        	<div class="card-content" >
+              <span class="card-title">{{j.job_category}}</span>
+			        <p style="font-size:70%">{{j.category_summary}}</p>
+        	</div>
+        </div>
+      </a>
+    </div>
+   {% endfor %}
+  </div>
+  <a href="/showposts"><button class="btn">Go to Posts</button></a>
+{% endblock%}
+</div>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{% extends "main/header.html" %}
+{% block content%}
+<div class="container">
+<h5>Your Profile Info</h5>
+<p>First Name: {{form.first_name}}</p>
+<p>Last Name: {{form.last_name}}</p>
+<p>Bio: {{bio}}</p>
+<p>Job Category: {{form.job_category}}</p>
+<p>Open To Work: {{form.opentowork}}</p>
+<br/>
+
+<p>Get Post and Job Details Added</p>
+<a href="/post"><button class="btn">Post Information</button></a>
+</div>
+{% endblock %}

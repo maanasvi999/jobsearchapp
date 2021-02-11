@@ -1,0 +1,18 @@
+{% extends "main/header.html" %}
+{% block content%}
+
+<div class="row">
+    <h5>Following are the available posts information</h5>
+    {%for p in posts%}
+    <div class="col s12 m8 l8">
+      	<div class="card" >
+        	<div class="card-content" >
+              <span class="card-title">{{p.post_title}}</span>
+			    <p>{{p.post_description}}</p>
+        	</div>
+        </div>
+      </a>
+    </div>
+   {% endfor %}
+  </div>
+{% endblock%}

@@ -1,0 +1,27 @@
+{% extends "main/header.html" %}
+{% block content%}
+
+<h1>Search Result for {{search}}</h1>
+<p>No. of Search Results found: {{search_jobs.count}}</p>
+<div class="row">
+  {% for job in search_jobs %}
+      <div class="col s12 m6 l6">
+          <a href="{{job.job_slug}}", style="color:#000">
+              <div class="card hoverable">
+                  <div class="card-content">
+                      <div class="card-title">{{job.job_title}}</div>
+                      <p> Job Published on: {{job.job_published}}</p>
+                      <p> Company: {{job.job_company}}</p>
+                      <p> Location: {{job.job_location}}</p>
+                      <p> Salary Range: {{job.job_salary}}</p>
+                      <p>{{job.job_summary | safe}}</p>
+                      <p style="font-size:70%">Click for details </p>
+                  </div>
+              </div>
+          </a>
+      </div>
+  {% endfor %}
+</div>
+<a href="/"><button class="btn btn-primary">Go Back Home</button></a>
+
+{% endblock%}

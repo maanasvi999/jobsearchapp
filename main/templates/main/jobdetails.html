@@ -1,0 +1,41 @@
+{% extends 'main/header.html' %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col s12 m4 l4">
+            <ul class="collapsible popout">
+                {% for job in sidebar %}
+                    {% if forloop.counter0 == this_job_idx %}
+                        <li class="active">
+                            <div class="collapsible-header">{{job.job_title}}<br>(currently viewing)</div>
+                      </li>
+                    {% else %}
+                        <li>
+                            <div class="collapsible-header">{{job.job_title}}</div>
+                            <div class="collapsible-body">
+                                <p><a href="/{{job.job_slug}}"><button class="btn waves-effect waves-light right-align" style="background-color:whitesmoke; color:black">Go</button></a></p>
+                            </div>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="col s12, m1, l1"></div>
+        <div class="col s12, m7, l7">
+            <h2>Application</h2>
+            <h3>{{job.job_title}}</h3>
+            <p>{{job.job_summary|safe}}</p>
+            <p> Job Published on: {{job.job_published}}</p>
+            <p> Company: {{job.job_company}}</p>
+            <p> Location: {{job.job_location}}</p>
+            <p> Salary Range: {{job.job_salary}}</p>
+            {%if user.is_authenticated %}
+                <a href="apply"><button class="btn">Apply For Job | Go to Application</button></a>
+            {% else %}
+                <a href="/login"><button class="btn">Login To Apply</button></a>
+                <a href="/register"><button class="btn">New User? Register To Apply</button></a>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
