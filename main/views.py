@@ -151,6 +151,13 @@ def profile(request):
     context = {'form':form}
     return render(request, 'main/fillprofileform.html', context)
 
+
+def showposts(request):
+    context = {}
+    posts = [p for p in Post.objects.all()]
+    context  = {'posts': posts}
+    return render(request, 'main/showposts.html', context)
+
 def post(request):
     form = PostForm()
     if request.method == 'POST':
@@ -158,14 +165,8 @@ def post(request):
         if form.is_valid():
             form.save()
             messages.info(request, "Saved Post!")
-            return render(request, 'main/showposts.html', {'form':form})
+            return redirect('main:showposts')
         else:
             messages.error(request, "Try Again")
     context = {'form':form}
     return render(request, 'main/post.html', context)
-
-def showposts(request):
-    context = {}
-    posts = [p for p in Post.objects.all()]
-    context  = {'posts': posts}
-    return render(request, 'main/showposts.html', context)

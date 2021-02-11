@@ -1,5 +1,11 @@
 from django.db import models
 from datetime import datetime
+import random
+import string 
+
+def rand_slug():
+    return ''.join(random.choice(string.ascii_letters + string.digits) for _ in range(6))
+
 
 class JobCategory(models.Model):
     job_category = models.CharField(max_length=200)
@@ -21,7 +27,7 @@ class JobInformation(models.Model):
     job_published = models.DateTimeField("Job Published", default = datetime.now)
     job_category = models.ForeignKey(JobCategory, default = 1, verbose_name="Category", on_delete = models.SET_DEFAULT)
     job_summary = models.CharField(max_length = 200)
-    job_slug = models.SlugField(unique = True)
+    job_slug = models.CharField(max_length=6, unique=True, default=rand_slug())
     
     class Meta:
         verbose_name_plural = "Information"
@@ -66,7 +72,7 @@ class CandidateApplication(models.Model):
 class Post(models.Model):
     post_title = models.CharField(max_length = 50)
     post_description = models.CharField(max_length = 250)
-    post_slug = models.SlugField(unique = True)
+    post_slug = models.CharField(max_length=6, unique=True, default=rand_slug())
 
     def __str__(self):
         return self.post_title
