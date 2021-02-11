@@ -17,6 +17,12 @@ from django.contrib import admin
 from django.urls import path, include
 from . import views
 
+from rest_framework import routers
+from django.conf.urls import url
+
+router = routers.DefaultRouter()
+router.register(r'candidateapplication', views.CandidateApplicationViewSet)
+
 app_name = 'main'
 urlpatterns = [
     path('', views.homepage, name='homepage'),
@@ -30,5 +36,7 @@ urlpatterns = [
     path('fillprofile', views.profile, name = 'fillprofile'),
     path('post', views.post, name = 'post'),
     path('showposts', views.showposts, name = 'showposts'),
+    path('api/applicants/', include(router.urls)),
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('<single_slug>', views.single_slug, name = "single_slug"),
 ]

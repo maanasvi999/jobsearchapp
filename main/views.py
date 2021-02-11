@@ -170,3 +170,10 @@ def post(request):
             messages.error(request, "Try Again")
     context = {'form':form}
     return render(request, 'main/post.html', context)
+
+from rest_framework import viewsets
+
+from .serializers import CandidateApplicationSerializer
+class CandidateApplicationViewSet(viewsets.ModelViewSet):
+    queryset = CandidateApplication.objects.all().order_by('date_of_birth')
+    serializer_class = CandidateApplicationSerializer
