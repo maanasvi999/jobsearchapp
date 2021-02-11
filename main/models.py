@@ -27,7 +27,7 @@ class JobInformation(models.Model):
     job_published = models.DateTimeField("Job Published", default = datetime.now)
     job_category = models.ForeignKey(JobCategory, default = 1, verbose_name="Category", on_delete = models.SET_DEFAULT)
     job_summary = models.CharField(max_length = 200)
-    job_slug = models.CharField(max_length=6, unique=True, default=rand_slug())
+    job_slug = models.CharField(max_length=100, unique=True, default=rand_slug())
     
     class Meta:
         verbose_name_plural = "Information"
@@ -72,7 +72,7 @@ class CandidateApplication(models.Model):
 class Post(models.Model):
     post_title = models.CharField(max_length = 50)
     post_description = models.CharField(max_length = 250)
-    post_slug = models.CharField(max_length=6, unique=True, default=rand_slug())
+    post_slug = models.CharField(max_length=100, unique=True, default=rand_slug())
 
     def __str__(self):
         return self.post_title
