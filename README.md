@@ -9,18 +9,18 @@ The following is the Youtube link to the video demo:
 https://youtu.be/2bElm8dupUA
 
 The Job Search App Web Application has the following features:
-    Register Feature for both JobSeeker and Employer
-    Login Feature for both JobSeeker and Employer
-    Search bar for ease of searching for a particular job
-    Application Forms to be filled for the Jobs by Jobseekers
-    Displaying Jobs of different Categories
-    Adding Job Availability Feature
-    Adding Important Posts Feature
-    Displaying added jobs
-    Displaying added posts
-    Adding Profile Information and displaying it
-    Test cases to check the working
-    API for Candidate Applications
-    Web Scraping feature to get jobs information from the web
+1. Register Feature for both JobSeeker and Employer
+2. Login Feature for both JobSeeker and Employer
+3. Search bar for ease of searching for a particular job
+4. Application Forms to be filled for the Jobs by Jobseekers
+5. Displaying Jobs of different Categories
+6. Adding Job Availability Feature
+7. Adding Important Posts Feature
+8. Displaying added jobs
+9. Displaying added posts
+10. Adding Profile Information and displaying it
+11. Test cases to check the working
+12. API for Candidate Applications
+13. Web Scraping feature to get jobs information from the web
 
 The Tech Stack mainly used in developing the application is Django Framework.
