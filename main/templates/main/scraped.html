@@ -1,0 +1,20 @@
+{% extends "main/header.html" %}
+{% block content%}
+
+<div class="row">
+    <h5>Following is the information scraped from the web</h5>
+    {%for job_detail in job_details%}
+    <div class="col s12 m8 l8">
+      	<div class="card" >
+        	<div class="card-content" >
+              <span class="card-title">{{job_detail.0}}</span>
+			    <p>{{job_detail.1}}</p>
+                <p>{{job_detail.2}}</p>
+                <p>{{job_detail.3}}</p>
+        	</div>
+        </div>
+      </a>
+    </div>
+   {% endfor %}
+  </div>
+{% endblock%}

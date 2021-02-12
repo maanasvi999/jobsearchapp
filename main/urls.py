@@ -36,6 +36,7 @@ urlpatterns = [
     path('fillprofile', views.profile, name = 'fillprofile'),
     path('post', views.post, name = 'post'),
     path('showposts', views.showposts, name = 'showposts'),
+    path('scraped', views.scraped, name = 'scraped'),
     path('api/applicants/', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('<single_slug>', views.single_slug, name = "single_slug"),

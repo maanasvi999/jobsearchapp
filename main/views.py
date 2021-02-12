@@ -171,6 +171,34 @@ def post(request):
     context = {'form':form}
     return render(request, 'main/post.html', context)
 
+import requests
+from bs4 import BeautifulSoup
+#Scraping data from the web
+def scraped(request):
+    context = {}
+    URL = "https://www.just.jobs/search"
+    page = requests.get(URL)
+    soup = BeautifulSoup(page.content, 'html.parser')
+    results = soup.find('div', class_ = 'alljob-main')
+    job_elems = results.find_all('div', class_ = 'search-job-loop-list-mid')
+    job_details = []
+    i = 0
+    for job_elem in job_elems:
+        job_title_elem = job_elem.find('h4')
+        job_salry = job_elem.find('div', class_ = 'search-job-loop-salary')
+        job_description = job_elem.find('div', class_ = 'search-job-loop-description')
+        job_list = job_elem.find('ul')
+        if None in (job_title_elem, job_salry, job_description, job_list):
+            continue
+        job_details.append([])
+        job_details[i].append(job_title_elem.text.strip())
+        job_details[i].append(job_salry.text.strip())
+        job_details[i].append(job_description.text.strip())
+        job_details[i].append(job_list.text.strip())
+        i+=1
+    context  = {'job_details': job_details}
+    return render(request, 'main/scraped.html', context)
+
 from rest_framework import viewsets
 
 from .serializers import CandidateApplicationSerializer
